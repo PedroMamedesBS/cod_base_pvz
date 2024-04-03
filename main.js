@@ -26,6 +26,17 @@ function mudaCena(cena){
 
 let pts = 0 
 
+let fundo = new Audio('./assets/PvZ_1.wav')
+let disparo = new Audio('./assets/Tiro.wav')
+let zumbiA = new Audio('./assets/Zumbis.wav')
+
+fundo.volume = 0.6
+fundo.loop = true
+
+zumbiA.volume = 0.9
+
+disparo.volume = 0.6
+
 let groupShoot = []
 let shoots = {
   draw(){
