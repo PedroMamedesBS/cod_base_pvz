@@ -42,13 +42,13 @@ class Obj{
     canvas.fillText(this.texto, x, y)
     }
     update_text(valor){
-      
+      this.texto = valor
     }
   }
   
   class Shoot extends Obj{
     move(){
-      
+      this.x +=10
     }
   }
   
