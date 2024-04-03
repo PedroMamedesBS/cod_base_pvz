@@ -65,13 +65,21 @@ let infinityBg = {
 }
 
 let menu = {
-   
+    titulo: new Text("Plantas vs Zumbis"),
+    titulo2: new Text("Click para Iniciar"),
+    planta: new Obj(320,350,80,120, "assets/planta.png"),
+    gamestart: new Obj(0,0,1300,600,"assets/GAMESTART.jpeg"),
+    
   click(){
    
   },
 
   draw(){
-    
+    infinityBg.draw()
+    this.titulo.draw_text(80,"Tahoma",430,200,"white")
+    this.titulo2.draw_text(40,"Verdana",550,400,"white")
+    this.planta.draw()
+    this.gamestart.draw()
   },
   update(){
     
