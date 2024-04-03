@@ -32,7 +32,7 @@ class Obj{
       
     }
     update_text(valor){
-      
+      this.texto = valor
     }
   }
   
