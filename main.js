@@ -27,8 +27,9 @@ function mudaCena(cena){
 let pts = 0 
 
 let fundo = new Audio('./assets/PvZ_1.wav')
-let disparo = new Audio('./assets/Tiro.wav')
+let disparo = new Audio('./assets/Tiro.mp3')
 let zumbiA = new Audio('./assets/Zumbis.wav')
+let gameoA = new Audio ('./assets/game_over_ofc.wav')
 
 fundo.volume = 0.6
 fundo.loop = true
@@ -36,6 +37,8 @@ fundo.loop = true
 zumbiA.volume = 0.9
 
 disparo.volume = 0.6
+
+let bullets = 15
 
 let groupShoot = []
 let shoots = {
@@ -56,9 +59,10 @@ let shoots = {
 
 let grupoZumbis = []
 let zumbis ={
+    time : 0,   
   spawZumbi(){
     this.time +=1
-    pos_Y = Math.random() *(500 - 80) + 80
+    pos_Y = Math.random() *(500 - 145) + 145
     if(this.time>=60){
       grupoZumbis.push(new Zumbi(1400, pos_Y, 150, 150, "assets/zumbidesenhado.png"))
       this.time=0
@@ -72,7 +76,7 @@ let zumbis ={
           grupoZumbis.splice(grupoZumbis.indexOf(zumbi),1)
           bullets = 15
           pts += 1
-          
+          zumbiA.play()
           
         }
       })
@@ -123,6 +127,7 @@ let menu = {
     this.titulo2.draw_text(40,"Verdana",550,400,"white")
     this.planta.draw()
     this.gamestart.draw()
+    
   },
   update(){
     
@@ -132,12 +137,13 @@ let menu = {
 let game = {
   placar_txt: new Text("Pontos: "),
   placar: new Text(pts),
+  planta: new Obj(320,200,80,120, "assets/planta.png"),
   
 
   click(){
     if(bullets > 0){
       bullets -= 1
-      
+      disparo.play()
       groupShoot.push(new Shoot((this.planta.x+60),(this.planta.y+this.planta.h/2)-30,30,30, "assets/tiro.png"))
     }
   },
@@ -158,6 +164,8 @@ let game = {
     this.planta.draw()
     shoots.draw()
     zumbis.draw()
+    fundo.play()
+    gameoA.pause()
   },
   
   update(){
@@ -186,12 +194,11 @@ let gameOver = {
     this.placar.draw_text(30,"Tahoma",1210,50,"white")
     this.lbl_game_over.draw_text(50,"Tahoma",320,300,"white")
     game_over_img.draw()
-    som1.pause()
-    som2.play()
-    som3.pause()
+    fundo.pause()
+    gameoA.play()
+    zumbiA.pause()
   },
   update(){
-    infinityBg.moveBg()
     this.placar.update_text(pts)
   },
 
