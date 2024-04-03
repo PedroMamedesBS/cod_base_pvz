@@ -157,9 +157,9 @@ let game = {
 }
 
 let game_over_img = {
-  
+    bg : new Obj(0,0,1300,600,"assets/GAMEOVER.jpeg"),
   draw(){
-    
+    this.bg.draw()
   }
 }
 
