@@ -125,10 +125,7 @@ let gameOver = {
   },
 
   limpa_cena(){
-    pts = 0
-    bullets = 15
-    grupoZumbis = []
-    groupShoot = []   
+      
   },
 
   click(){
