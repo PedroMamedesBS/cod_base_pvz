@@ -19,7 +19,15 @@ class Obj{
     }
   
     collide(obj){
-      
+      if (this.x < obj.x + obj.w &&
+        this.x + this.w > obj.x &&
+        this.y < obj.y + obj.h &&
+        this.y + this.h > obj.y)
+        {
+          return true
+        }else {
+          return false
+        }
     }
   }
   
@@ -29,7 +37,9 @@ class Obj{
         this.texto = text
     }
     draw_text(size, font, x, y, color){
-      
+      canvas.font = size + "px" + " " + font
+    canvas.fillStyle = color
+    canvas.fillText(this.texto, x, y)
     }
     update_text(valor){
       
@@ -43,9 +53,9 @@ class Obj{
   }
   
   class Zumbi extends Obj{
-    
+    velocidade = Math.random()*(12 - 2) + 2
     move(){
-     
+      this.x -= this.velocidade
     }
   }
   class Img extends Obj{
