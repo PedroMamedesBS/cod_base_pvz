@@ -24,9 +24,9 @@ class Obj{
   }
   
   class Text{
-   
+    texto = ""  
     constructor(text){
-     
+        this.texto = text
     }
     draw_text(size, font, x, y, color){
       

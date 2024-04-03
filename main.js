@@ -15,17 +15,26 @@ document.addEventListener('keyup', (e)=>{
 
 let cenaCorrente = {}
 function mudaCena(cena){
-  
+    cenaCorrente = cena
 }
 
+
+let bullets = 15
 
 let groupShoot = []
 let shoots = {
   draw(){
-    
+    groupShoot.forEach((shoot)=>{
+        shoot.draw()
+      })
   },
   update(){
-    
+    groupShoot.forEach((shoot)=>{
+        shoot.move()
+        if(shoot.x>=1400){
+          groupShoot.splice(shoot[0],1)
+        }
+      })
   },
 }
 
@@ -108,7 +117,10 @@ let gameOver = {
   },
 
   limpa_cena(){
-        
+    pts = 0
+    bullets = 15
+    grupoZumbis = []
+    groupShoot = []   
   },
 
   click(){
