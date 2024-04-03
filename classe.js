@@ -19,7 +19,7 @@ class Obj{
     }
   
     collide(obj){
-      
+     
     }
   }
   
@@ -38,7 +38,7 @@ class Obj{
   
   class Shoot extends Obj{
     move(){
-      
+      this.x +=10
     }
   }
   

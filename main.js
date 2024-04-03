@@ -37,14 +37,33 @@ let zumbis ={
     
   },
   destroyZumbi(){
-    
+    groupShoot.forEach((shoot)=>{
+      grupoZumbis.forEach((zumbi)=>{
+        if(shoot.collide(zumbi)){
+          groupShoot.splice(groupShoot.indexOf(shoot),1)
+          grupoZumbis.splice(grupoZumbis.indexOf(zumbi),1)
+          bullets = 15
+          pts += 1
+          
+          
+        }
+      })
+    })
   },
 
   draw(){
     
   },
   update(){
-    
+    this.spawZumbi()
+    this.destroyZumbi()
+    grupoZumbis.forEach((zumbi)=>{
+      zumbi.move()
+      if(zumbi.x < 220){
+        grupoZumbis.splice(grupoZumbis.indexOf(zumbi),1)
+        mudaCena(gameOver)
+      }
+    })
   }
 }
 
